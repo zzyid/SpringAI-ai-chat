@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: spring-ai-chat
+  ai:
+    ollama:
+      base-url: http://localhost:11434 # ollama服务地址， 这就是默认值
+      chat:
+        model: deepseek-r1:7b # 模型名称
+        options:
+          temperature: 0.8 # 模型温度，影响模型生成结果的随机性，越小越稳定
+    openai:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode
+      api-key: sk-209a984b8590434e88b76bbd3b93d42d
+      chat:
+        options:
+          model: qwen-plus
+      embedding:
+        options:
+          model: text-embedding-v3
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/itheima?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowPublicKeyRetrieval=true&allowMultiQueries=true&useServerPrepStmts=false
+    username: root
+    password: hsp
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug # 拦截器日志
+    com.itheima.ai: debug # 拦截器日志
